@@ -5,6 +5,9 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-android:
     runs-on: ubuntu-latest
@@ -19,16 +22,16 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Set up Java JDK
+      - name: Set up Java JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Build Web Assets for Android
@@ -45,9 +48,20 @@ jobs:
           cd android
           ./gradlew assembleDebug --stacktrace
 
-      - name: Upload Android APK
+      - name: Upload Android APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: TailorYourBehavior-Android-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 14
+
+      - name: Publish Android APK Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v1.0-apk
+          name: "Tailor Your Behavior Android APK v1.0"
+          body: "Direct download of the native Android debug APK for Tailor Your Behavior."
+          files: android/app/build/outputs/apk/debug/app-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
