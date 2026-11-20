@@ -11,27 +11,15 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
   if (!isOpen) return null;
 
   return (
-    <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs animate-fade-in overflow-hidden">
-      {/* Backdrop tap to dismiss */}
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm animate-fade-in p-0 sm:p-4">
       <div 
-        className="absolute inset-0 bg-transparent cursor-pointer" 
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      <div 
-        className="relative z-10 w-full bg-white dark:bg-slate-900 rounded-t-3xl shadow-2xl border-t border-rose-500/30 overflow-hidden max-h-[85%] flex flex-col animate-slide-up"
+        className="w-full max-w-md bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-2xl shadow-2xl border border-rose-500/30 overflow-hidden max-h-[90vh] flex flex-col animate-slide-up"
         role="dialog"
         aria-modal="true"
         aria-labelledby="emergency-title"
       >
-        {/* Mobile Pull / Swipe Handle */}
-        <div className="w-full flex justify-center pt-2.5 pb-1 bg-gradient-to-r from-rose-900 via-rose-800 to-slate-900">
-          <div className="w-10 h-1 bg-white/40 rounded-full" />
-        </div>
-
         {/* Header */}
-        <div className="bg-gradient-to-r from-rose-900 via-rose-800 to-slate-900 px-4 py-3 text-white flex items-center justify-between">
+        <div className="bg-gradient-to-r from-rose-900 via-rose-800 to-slate-900 p-4 text-white flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
             <div className="w-9 h-9 rounded-full bg-rose-500/20 border border-rose-400/40 flex items-center justify-center">
               <ShieldAlert className="w-5 h-5 text-rose-300" />
