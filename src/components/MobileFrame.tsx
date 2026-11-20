@@ -10,7 +10,10 @@ interface MobileFrameProps {
 export type DeviceMode = 'iphone' | 'android' | 'responsive';
 
 export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, onToggleDarkMode }) => {
-  const [deviceMode, setDeviceMode] = useState<DeviceMode>('iphone');
+  const isMobileScreen = typeof window !== 'undefined' && (
+    window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  );
+  const [deviceMode, setDeviceMode] = useState<DeviceMode>(isMobileScreen ? 'responsive' : 'iphone');
   const [currentTime, setCurrentTime] = useState<string>('9:41');
   const [zoomMode, setZoomMode] = useState<'fit' | '100%'>('fit');
   const [scale, setScale] = useState<number>(1);
