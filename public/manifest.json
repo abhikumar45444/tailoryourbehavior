@@ -1,0 +1,24 @@
+{
+  "name": "Tailor Your Behavior",
+  "short_name": "TYB",
+  "description": "Clinical Psychology & Behavioral Health Practice - Dr. Thomas Gross, Ph.D.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#072749",
+  "theme_color": "#072749",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://static.wixstatic.com/media/50ee2f_1249069b036c4037bff877d94a713382~mv2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/50ee2f_1249069b036c4037bff877d94a713382~mv2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://static.wixstatic.com/media/50ee2f_1249069b036c4037bff877d94a713382~mv2.png/v1/fill/w_512,h_512,lg_1,usm_0.66_1.00_0.01/50ee2f_1249069b036c4037bff877d94a713382~mv2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
