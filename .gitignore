@@ -33,3 +33,4 @@ crawl_all.js
 summarize.js
 extract_details.js
 find_images.js
+*.apk
