@@ -150,13 +150,34 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
         ))}
       </div>
 
-      {/* Service Detail Modal */}
+      {/* Service Detail Modal (Inside Phone Frame) */}
       {activeModalService && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm p-0 sm:p-4 animate-fade-in">
-          <div className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[90vh] flex flex-col overflow-hidden animate-slide-up">
+        <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs animate-fade-in overflow-hidden">
+          {/* Backdrop tap to dismiss inside phone */}
+          <div 
+            className="absolute inset-0 bg-transparent cursor-pointer"
+            onClick={() => {
+              setActiveModalService(null);
+              if (onClearSelectedService) onClearSelectedService();
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 w-full bg-white dark:bg-slate-900 rounded-t-3xl shadow-2xl border-t border-slate-700 max-h-[85%] flex flex-col overflow-hidden animate-slide-up">
             
+            {/* Sheet Handle */}
+            <div 
+              onClick={() => {
+                setActiveModalService(null);
+                if (onClearSelectedService) onClearSelectedService();
+              }}
+              className="w-full flex justify-center pt-2.5 pb-1 bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 cursor-pointer"
+            >
+              <div className="w-10 h-1 bg-white/30 rounded-full" />
+            </div>
+
             {/* Modal Header */}
-            <div className="relative bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white p-5">
+            <div className="relative bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white px-5 py-4">
               <button
                 onClick={() => {
                   setActiveModalService(null);

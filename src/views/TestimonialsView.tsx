@@ -146,10 +146,24 @@ export const TestimonialsView: React.FC = () => {
 
       </div>
 
-      {/* Submit Review Modal */}
+      {/* Submit Review Modal (Inside Phone Frame) */}
       {showSubmitModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-fade-in">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 space-y-3.5 animate-slide-up">
+        <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs animate-fade-in overflow-hidden">
+          {/* Backdrop tap to dismiss inside phone */}
+          <div 
+            className="absolute inset-0 bg-transparent cursor-pointer"
+            onClick={() => setShowSubmitModal(false)}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 w-full bg-white dark:bg-slate-900 rounded-t-3xl shadow-2xl border-t border-slate-700 p-5 space-y-3.5 animate-slide-up max-h-[85%] overflow-y-auto">
+            <div 
+              onClick={() => setShowSubmitModal(false)}
+              className="w-full flex justify-center -mt-2 pb-2 cursor-pointer"
+            >
+              <div className="w-10 h-1 bg-slate-300 dark:bg-slate-700 rounded-full" />
+            </div>
+
             <h3 className="font-serif font-bold text-base text-slate-900 dark:text-white">
               Share Your Experience
             </h3>
