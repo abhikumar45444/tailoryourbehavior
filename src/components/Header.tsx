@@ -12,7 +12,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergency, onOpenBooking, 
   const [imgError, setImgError] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white shadow-md border-b border-slate-800/80 px-3.5 py-2 select-none">
+    <header className="sticky top-0 z-40 bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white shadow-md border-b border-slate-800/80 px-3.5 py-2 select-none pt-[max(0.5rem,env(safe-area-inset-top))]">
       <div className="flex items-center justify-between">
         {/* Brand / Logo info */}
         <button 

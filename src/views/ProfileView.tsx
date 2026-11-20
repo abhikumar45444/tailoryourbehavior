@@ -8,7 +8,7 @@ import {
   Phone, 
   Mail, 
   FileDown, 
-  ExternalLink, 
+  Check, 
   CheckCircle,
   Calendar,
   Sparkles
@@ -38,8 +38,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onBookConsultation }) 
               alt={CLINIC_INFO.doctor} 
               className="w-full h-full object-cover rounded-full"
             />
-            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-white text-[10px]">
-              &check;
+            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-white shadow-xs">
+              <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
             </div>
           </div>
 

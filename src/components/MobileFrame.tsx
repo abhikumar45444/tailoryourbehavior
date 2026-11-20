@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Smartphone, Monitor, Moon, Sun, Wifi, Battery, Maximize2 } from 'lucide-react';
+import { Smartphone, Monitor, Moon, Sun, Wifi, Battery } from 'lucide-react';
 
 interface MobileFrameProps {
   children: React.ReactNode;
@@ -10,15 +10,26 @@ interface MobileFrameProps {
 export type DeviceMode = 'iphone' | 'android' | 'responsive';
 
 export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, onToggleDarkMode }) => {
-  const isMobileScreen = typeof window !== 'undefined' && (
-    window.innerWidth < 640 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-  );
-  const [deviceMode, setDeviceMode] = useState<DeviceMode>(isMobileScreen ? 'responsive' : 'iphone');
+  const [isMobileDevice, setIsMobileDevice] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  });
+
+  const [deviceMode, setDeviceMode] = useState<DeviceMode>('iphone');
   const [currentTime, setCurrentTime] = useState<string>('9:41');
   const [zoomMode, setZoomMode] = useState<'fit' | '100%'>('fit');
   const [scale, setScale] = useState<number>(1);
 
-  // Time updater
+  // Resize / device detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileDevice(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Time updater for desktop simulator
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -31,15 +42,13 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
     return () => clearInterval(interval);
   }, []);
 
-  // Dynamic Auto-fit scaling to prevent vertical overflow and match "i want it to look like this"
+  // Auto-fit scale on desktop screens
   useEffect(() => {
     const calculateScale = () => {
-      if (deviceMode === 'responsive' || zoomMode === '100%') {
+      if (isMobileDevice || deviceMode === 'responsive' || zoomMode === '100%') {
         setScale(1);
         return;
       }
-      // Phone frame standard height is 840px
-      // Available height = window.innerHeight - (top bar + padding ≈ 60px)
       const availableHeight = window.innerHeight - 60;
       if (availableHeight < 840) {
         const factor = Math.max(0.45, Math.min(1, availableHeight / 840));
@@ -52,8 +61,22 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
     calculateScale();
     window.addEventListener('resize', calculateScale);
     return () => window.removeEventListener('resize', calculateScale);
-  }, [deviceMode, zoomMode]);
+  }, [isMobileDevice, deviceMode, zoomMode]);
 
+  // ON PHYSICAL MOBILE PHONES / SAFARI STANDALONE:
+  // Render 100% edge-to-edge full screen with NO outer mockup, NO white margins, NO duplicate status bar!
+  if (isMobileDevice) {
+    return (
+      <div className={`w-full min-h-[100dvh] h-[100dvh] overflow-hidden flex flex-col ${
+        darkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}>
+        {children}
+      </div>
+    );
+  }
+
+  // ON DESKTOP BROWSERS:
+  // Render realistic interactive device simulator with Auto-Fit
   return (
     <div className={`h-screen w-screen overflow-hidden transition-colors duration-200 ${
       darkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-100 text-slate-900'
@@ -99,7 +122,6 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
         </div>
 
         <div className="flex items-center space-x-1.5">
-          {/* Zoom toggle between auto-fit and 100% */}
           {deviceMode !== 'responsive' && (
             <button
               onClick={() => setZoomMode(zoomMode === 'fit' ? '100%' : 'fit')}
@@ -120,7 +142,7 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
         </div>
       </aside>
 
-      {/* Main View Area: Scaled Wrapper Container */}
+      {/* Main View Area */}
       <div className="flex-1 w-full flex items-center justify-center overflow-hidden my-auto">
         {deviceMode === 'responsive' ? (
           <div className="w-full max-w-md h-full bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex flex-col">
@@ -153,7 +175,6 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
                   : 'rounded-[42px] p-2.5 bg-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.4)] border-[4px] border-slate-700 ring-1 ring-slate-600/40'
               }`}
             >
-              
               {/* Inner Screen */}
               <div className="w-full h-full flex flex-col overflow-hidden relative rounded-[38px] bg-white dark:bg-slate-900 shadow-inner">
                 
@@ -161,7 +182,6 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
                 <div className="bg-slate-950 text-white px-5 pt-2 pb-1 flex items-center justify-between text-xs select-none z-50 flex-shrink-0">
                   <span className="font-semibold tracking-tight text-[11px]">{currentTime}</span>
 
-                  {/* Dynamic Island for iPhone */}
                   {deviceMode === 'iphone' && (
                     <div className="flex items-center justify-center space-x-1.5 w-24 h-5 bg-black rounded-full shadow-inner border border-slate-800/60">
                       <div className="w-2 h-2 rounded-full bg-slate-900 border border-slate-800" />
@@ -169,7 +189,6 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children, darkMode, on
                     </div>
                   )}
 
-                  {/* Galaxy Camera punch */}
                   {deviceMode === 'android' && (
                     <div className="w-3 h-3 rounded-full bg-black border border-slate-800" />
                   )}
