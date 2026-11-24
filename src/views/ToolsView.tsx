@@ -234,19 +234,16 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
     <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
       {/* Header (Clean Light Theme) */}
-      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+      <div className="bg-white text-slate-900 px-5 pt-3 pb-2 border-b border-slate-200">
         <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Evidence-Based Companion
         </span>
-        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
+        <h1 className="font-serif text-lg font-bold text-slate-900">
           Behavioral Health Tools
         </h1>
-        <p className="text-xs text-slate-500 mt-1">
-          Interactive psychological exercises based on Beck Institute CBT and Kazdin Parent Management.
-        </p>
 
         {/* Tool selector buttons */}
-        <div className="grid grid-cols-4 gap-1.5 mt-3">
+        <div className="grid grid-cols-4 gap-1.5 mt-2">
           {[
             { id: 'cbt', label: 'CBT Journal', icon: Brain },
             { id: 'breathing', label: 'Breathing', icon: Wind },
@@ -299,7 +296,7 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
 
             {/* Thought Entry Form Modal/Drawer */}
             {showThoughtForm && (
-              <form onSubmit={handleSaveThought} className="p-4 bg-white dark:bg-slate-800/90 rounded-2xl border border-amber-500/40 shadow-md space-y-3 animate-fade-in">
+              <form onSubmit={handleSaveThought} className="p-3 bg-white dark:bg-slate-800/90 rounded-2xl border border-amber-500/40 shadow-md space-y-2.5 animate-fade-in">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     1. The Triggering Situation
@@ -332,7 +329,7 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     3. Identify Cognitive Distortion
                   </label>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {distortionOptions.map((dist) => {
                       const selected = selectedDistortions.includes(dist);
                       return (
@@ -346,7 +343,7 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
                               setSelectedDistortions([...selectedDistortions, dist]);
                             }
                           }}
-                          className={`px-2 py-1 rounded-lg text-[10px] font-medium transition-all ${
+                          className={`px-1.5 py-0.5 rounded-lg text-[10px] font-medium transition-all ${
                             selected
                               ? 'bg-amber-500 text-slate-950 font-bold'
                               : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
@@ -373,32 +370,7 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div>
-                    <label className="block font-semibold text-slate-600 dark:text-slate-400 mb-1">
-                      Distress Before (1-10): {moodBefore}
-                    </label>
-                    <input 
-                      type="range" min="1" max="10" 
-                      value={moodBefore} 
-                      onChange={(e) => setMoodBefore(Number(e.target.value))}
-                      className="w-full accent-amber-500" 
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-semibold text-slate-600 dark:text-slate-400 mb-1">
-                      Distress After (1-10): {moodAfter}
-                    </label>
-                    <input 
-                      type="range" min="1" max="10" 
-                      value={moodAfter} 
-                      onChange={(e) => setMoodAfter(Number(e.target.value))}
-                      className="w-full accent-emerald-500" 
-                    />
-                  </div>
-                </div>
-
-                <div className="flex space-x-2 pt-2">
+                <div className="flex space-x-2 pt-1">
                   <button
                     type="button"
                     onClick={() => setShowThoughtForm(false)}

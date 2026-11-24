@@ -112,19 +112,16 @@ export const BookingView: React.FC<BookingViewProps> = ({
     <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
       {/* Header (Clean Light Theme) */}
-      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+      <div className="bg-white text-slate-900 px-5 pt-3 pb-2 border-b border-slate-200">
         <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Confidential & Direct
         </span>
-        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
+        <h1 className="font-serif text-lg font-bold text-slate-900">
           Book Appointment
         </h1>
-        <p className="text-xs text-slate-500 mt-1">
-          Schedule your initial consultation or follow-up session with Dr. Thomas Gross, Ph.D.
-        </p>
 
         {/* Sub-tab toggle */}
-        <div className="flex space-x-2 mt-3">
+        <div className="flex space-x-2 mt-2">
           <button
             onClick={() => { setActiveSubTab('new'); setConfirmedBooking(null); }}
             className={`flex-1 py-1.5 text-xs font-semibold rounded-xl transition-all ${
@@ -314,9 +311,9 @@ export const BookingView: React.FC<BookingViewProps> = ({
 
                 {/* STEP 1: Select Service & Format */}
                 {step === 1 && (
-                  <div className="space-y-4 animate-fade-in">
+                  <div className="space-y-3 animate-fade-in">
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                         1. Choose Modality / Service
                       </label>
                       <select
@@ -332,19 +329,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
                       </select>
                     </div>
 
-                    {selectedServiceObj && (
-                      <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-slate-700 dark:text-slate-300">
-                        <span className="font-bold text-amber-700 dark:text-amber-400 block mb-0.5">
-                          {selectedServiceObj.subtitle}
-                        </span>
-                        <p className="line-clamp-2 text-[11px]">
-                          {selectedServiceObj.shortDescription}
-                        </p>
-                      </div>
-                    )}
-
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                         2. Session Format
                       </label>
                       <div className="grid grid-cols-3 gap-2">
@@ -392,7 +378,7 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 shadow-md mt-4"
+                      className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 shadow-md"
                     >
                       <span>Continue to Date & Time</span>
                       <ChevronRight className="w-4 h-4" />
