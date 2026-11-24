@@ -8,7 +8,7 @@ import {
   Phone, 
   Mail, 
   FileDown, 
-  Check, 
+  ExternalLink, 
   CheckCircle,
   Calendar,
   Sparkles
@@ -27,50 +27,50 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onBookConsultation }) 
   };
 
   return (
-    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 dark:text-slate-100 pb-16">
+    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
-      {/* Hero Doctor Header */}
-      <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-brand-950 text-white px-5 pt-6 pb-6 border-b border-slate-800 text-center relative overflow-hidden">
+      {/* Hero Doctor Header (Clean Light Theme) */}
+      <div className="bg-white text-slate-900 px-5 pt-6 pb-6 border-b border-slate-200 text-center relative overflow-hidden">
         <div className="relative z-10 flex flex-col items-center">
-          <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-amber-400 to-amber-600 shadow-xl mb-3">
+          <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-amber-400 to-amber-500 shadow-md mb-3">
             <img 
               src={CLINIC_INFO.doctorPhoto} 
               alt={CLINIC_INFO.doctor} 
               className="w-full h-full object-cover rounded-full"
             />
-            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-white shadow-xs">
-              <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-[10px]">
+              &check;
             </div>
           </div>
 
-          <h1 className="font-serif text-xl sm:text-2xl font-bold text-white">
+          <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
             {CLINIC_INFO.doctor}
           </h1>
-          <p className="text-xs text-amber-400 font-semibold mt-0.5">
+          <p className="text-xs text-amber-600 font-semibold mt-0.5">
             Clinical Psychologist &bull; Author &bull; Educator
           </p>
-          <p className="text-[11px] text-slate-300 max-w-xs mt-1">
+          <p className="text-xs text-slate-500 max-w-xs mt-1 leading-relaxed">
             Over 17 years in behavioral health specializing in defiant youth, emotional regulation, and parenting enhancement.
           </p>
 
           <div className="flex items-center space-x-2 mt-4">
             <button
               onClick={onBookConsultation}
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow-md flex items-center space-x-1.5"
+              className="px-4 py-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow-xs flex items-center space-x-1.5"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book with Dr. Gross</span>
             </button>
             <a
               href={`tel:${CLINIC_INFO.phone}`}
-              className="p-2 bg-slate-800 hover:bg-slate-700 text-amber-400 rounded-xl border border-slate-700 flex items-center justify-center"
+              className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl border border-slate-200 flex items-center justify-center active:scale-95 transition-all"
               title="Call"
             >
               <Phone className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${CLINIC_INFO.email}`}
-              className="p-2 bg-slate-800 hover:bg-slate-700 text-amber-400 rounded-xl border border-slate-700 flex items-center justify-center"
+              className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl border border-slate-200 flex items-center justify-center active:scale-95 transition-all"
               title="Email"
             >
               <Mail className="w-4 h-4" />

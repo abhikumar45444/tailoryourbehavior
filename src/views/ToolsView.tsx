@@ -231,17 +231,17 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 dark:text-slate-100 pb-16">
+    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
-      {/* Header */}
-      <div className="bg-slate-900 text-white px-5 pt-5 pb-4 border-b border-slate-800">
-        <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
+      {/* Header (Clean Light Theme) */}
+      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+        <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Evidence-Based Companion
         </span>
-        <h1 className="font-serif text-2xl font-bold">
+        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
           Behavioral Health Tools
         </h1>
-        <p className="text-xs text-slate-300 mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           Interactive psychological exercises based on Beck Institute CBT and Kazdin Parent Management.
         </p>
 
@@ -261,8 +261,8 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
                 onClick={() => setActiveTool(item.id as any)}
                 className={`py-2 px-1 rounded-xl text-center flex flex-col items-center transition-all ${
                   active 
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
                 <Icon className="w-4 h-4 mb-1" />

@@ -63,30 +63,30 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
   };
 
   return (
-    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 dark:text-slate-100 pb-16">
+    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
-      {/* Header */}
-      <div className="bg-slate-900 text-white px-5 pt-5 pb-4 border-b border-slate-800">
-        <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
+      {/* Header (Clean Light Theme) */}
+      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+        <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Clinical Modalities & Programs
         </span>
-        <h1 className="font-serif text-2xl font-bold">
+        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
           Therapeutic Services
         </h1>
-        <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+        <p className="text-xs text-slate-500 mt-1 leading-relaxed">
           Dr. Thomas Gross utilizes empirically validated treatments tailored to children, adolescents, adults, and families.
         </p>
 
         {/* Category Pills */}
-        <div className="flex space-x-2 mt-4 overflow-x-auto no-scrollbar pb-1">
+        <div className="flex space-x-2 mt-3 overflow-x-auto no-scrollbar pb-1">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat
-                  ? 'bg-amber-500 text-slate-950 shadow-sm'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
               {cat}
@@ -101,23 +101,23 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
           <div
             key={service.id}
             onClick={() => setActiveModalService(service)}
-            className="p-4 bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-amber-400/50 cursor-pointer active:scale-99 transition-all"
+            className="p-4 bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:border-amber-400/50 cursor-pointer active:scale-99 transition-all"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center flex-shrink-0">
                   {getServiceIcon(service.icon)}
                 </div>
                 <div>
                   <div className="flex items-center space-x-1.5">
-                    <span className="px-2 py-0.2 text-[9px] font-bold rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                    <span className="px-2 py-0.2 text-[9px] font-bold rounded-full bg-slate-100 text-slate-600">
                       {service.category}
                     </span>
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold">
+                    <span className="text-[10px] text-amber-600 font-semibold">
                       {service.duration}
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white mt-0.5">
+                  <h3 className="font-bold text-sm sm:text-base text-slate-900 mt-0.5">
                     {service.title}
                   </h3>
                 </div>

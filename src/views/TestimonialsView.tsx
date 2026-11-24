@@ -48,30 +48,30 @@ export const TestimonialsView: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 dark:text-slate-100 pb-16">
+    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
-      {/* Header */}
-      <div className="bg-slate-900 text-white px-5 pt-5 pb-4 border-b border-slate-800">
-        <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
+      {/* Header (Clean Light Theme) */}
+      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+        <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Patient Experiences
         </span>
-        <h1 className="font-serif text-2xl font-bold">
+        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
           What They Say
         </h1>
-        <p className="text-xs text-slate-300 mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           In a recent survey of our patients, over <strong>90%</strong> would recommend our practice to a friend.
         </p>
 
         {/* Tag pills */}
-        <div className="flex space-x-2 mt-4 overflow-x-auto no-scrollbar pb-1">
+        <div className="flex space-x-2 mt-3 overflow-x-auto no-scrollbar pb-1">
           {tags.map((tag) => (
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedTag === tag
-                  ? 'bg-amber-500 text-slate-950 shadow-sm'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-amber-500 text-slate-950 shadow-xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
               {tag}

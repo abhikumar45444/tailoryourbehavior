@@ -34,3 +34,4 @@ summarize.js
 extract_details.js
 find_images.js
 *.apk
+*.tmp

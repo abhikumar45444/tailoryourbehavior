@@ -6,8 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:android": "tsc && vite build --base ./ && cap sync android",
-    "open:android": "cap open android",
     "preview": "vite preview"
   },
   "dependencies": {

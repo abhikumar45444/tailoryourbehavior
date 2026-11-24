@@ -109,17 +109,17 @@ export const BookingView: React.FC<BookingViewProps> = ({
   const selectedServiceObj = SERVICES_DATA.find(s => s.id === selectedServiceId);
 
   return (
-    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 dark:text-slate-100 pb-16">
+    <div className="flex-1 overflow-y-auto touch-scroll text-slate-800 bg-slate-50 pb-16">
       
-      {/* Header */}
-      <div className="bg-slate-900 text-white px-5 pt-5 pb-4 border-b border-slate-800">
-        <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
+      {/* Header (Clean Light Theme) */}
+      <div className="bg-white text-slate-900 px-5 pt-4 pb-3 border-b border-slate-200">
+        <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
           Confidential & Direct
         </span>
-        <h1 className="font-serif text-2xl font-bold">
+        <h1 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">
           Book Appointment
         </h1>
-        <p className="text-xs text-slate-300 mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           Schedule your initial consultation or follow-up session with Dr. Thomas Gross, Ph.D.
         </p>
 
@@ -129,8 +129,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
             onClick={() => { setActiveSubTab('new'); setConfirmedBooking(null); }}
             className={`flex-1 py-1.5 text-xs font-semibold rounded-xl transition-all ${
               activeSubTab === 'new'
-                ? 'bg-amber-500 text-slate-950 shadow-sm'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
             New Booking
@@ -139,8 +139,8 @@ export const BookingView: React.FC<BookingViewProps> = ({
             onClick={() => setActiveSubTab('my-bookings')}
             className={`flex-1 py-1.5 text-xs font-semibold rounded-xl transition-all flex items-center justify-center space-x-1.5 ${
               activeSubTab === 'my-bookings'
-                ? 'bg-amber-500 text-slate-950 shadow-sm'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
             <span>My Bookings</span>

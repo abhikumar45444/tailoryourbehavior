@@ -16,27 +16,12 @@ export const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<NavTab>('home');
   const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
-  
-  // Theme state: defaults to dark for a calming modern aesthetic, respects localStorage
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    const saved = localStorage.getItem('tyb_theme');
-    if (saved) return saved === 'dark';
-    return false; // Default to clean medical light theme
-  });
 
+  // Enforce clean clinical light theme only
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('tyb_theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('tyb_theme', 'light');
-    }
-  }, [darkMode]);
-
-  const handleToggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('tyb_theme', 'light');
+  }, []);
 
   const handleSelectServiceFromHome = (serviceId: string) => {
     setSelectedServiceId(serviceId);
@@ -49,18 +34,17 @@ export const App: React.FC = () => {
   };
 
   return (
-    <MobileFrame darkMode={darkMode} onToggleDarkMode={handleToggleTheme}>
-      <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900 overflow-hidden relative">
+    <MobileFrame>
+      <div className="flex flex-col h-full bg-slate-50 text-slate-800 overflow-hidden relative">
         
-        {/* Mobile App Header */}
+        {/* Mobile App Header (Light theme) */}
         <Header 
           onOpenEmergency={() => setIsEmergencyOpen(true)}
-          onOpenBooking={() => setCurrentTab('booking')}
           onOpenAbout={() => setCurrentTab('profile')}
         />
 
         {/* View Switcher Container */}
-        <main className="flex-1 flex flex-col overflow-hidden relative">
+        <main className="flex-1 flex flex-col overflow-hidden relative bg-slate-50">
           {currentTab === 'home' && (
             <HomeView 
               onNavigate={(tab) => setCurrentTab(tab)}
@@ -104,7 +88,7 @@ export const App: React.FC = () => {
           )}
         </main>
 
-        {/* Bottom Tab Bar */}
+        {/* Bottom Tab Bar (Clean light theme) */}
         <BottomNav 
           currentTab={currentTab} 
           onTabChange={(tab) => {
