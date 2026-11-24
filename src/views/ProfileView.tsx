@@ -11,7 +11,8 @@ import {
   ExternalLink, 
   CheckCircle,
   Calendar,
-  Sparkles
+  Sparkles,
+  Check
 } from 'lucide-react';
 import { CLINIC_INFO, DOCTOR_CREDENTIALS } from '../data/websiteContent';
 
@@ -38,8 +39,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onBookConsultation }) 
               alt={CLINIC_INFO.doctor} 
               className="w-full h-full object-cover rounded-full"
             />
-            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-[10px]">
-              &check;
+            <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white shadow-xs">
+              <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
             </div>
           </div>
 
@@ -113,22 +114,44 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onBookConsultation }) 
               </span>
             </div>
 
-            <div className="bg-white dark:bg-slate-800/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
-              <h3 className="font-bold text-slate-900 dark:text-white text-sm">
-                About Dr. Thomas Gross, Ph.D.
-              </h3>
-              <p>
-                Dr. Thomas Gross has been in the field of behavioral health for over <strong>17 years</strong> and has expertise working with anxiety, depression, behavior modification, frustration tolerance, anger management, and parenting enhancement across behaviorally challenged parents, children, teens, and adults.
-              </p>
-              <p>
-                Having received an <strong>Excellence in Teaching Award in 2014</strong>, his passion to assist teenagers became more deeply rooted. He is the author of the research study <em>&ldquo;Influence Of Perceived Parenting Styles On Alcohol Consumption & Academic Achievement Among Jewish Youth,&rdquo;</em> and developed the &ldquo;T.Y.B.&rdquo; method to guide struggling families navigate through developmental turbulence.
-              </p>
-              <p>
-                Dr. Gross was invited to join <strong>The PSI CHI honor society</strong> for psychologists in 2015. He received his doctorate in Clinical Psychology from Walden University in Nov. 2021 and trained under top pioneers in several therapeutic modalities, gaining extensive insight into evidence-based therapy practices.
-              </p>
-              <p>
-                Dr. Gross has been requested by several local schools within the community to educate children, teachers, and parents on substance abuse prevention, suicidal ideation indicators, and adolescent behavior modification. As a mental health resource to EMS, schools, and parents via his parenting WhatsApp groups, he provides expert consultation for acute crises.
-              </p>
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs space-y-4">
+              <div>
+                <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block mb-1">
+                  17+ Years of Clinical Dedication
+                </span>
+                <h3 className="font-serif font-bold text-slate-900 text-base">
+                  Dr. Thomas Gross, Ph.D.
+                </h3>
+              </div>
+
+              <div className="space-y-3 text-xs leading-relaxed text-slate-600">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1">
+                    Specialized Focus
+                  </h4>
+                  <p>
+                    Specializing in behavior modification, frustration tolerance, emotion regulation, and the proprietary &ldquo;T.Y.B.&rdquo; method for defiant children, teens, and adults.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1">
+                    Academic Honors & Research
+                  </h4>
+                  <p>
+                    Recipient of the 2014 Excellence in Teaching Award, PSI CHI Honor Society inductee, and author of landmark research on parenting styles and adolescent behavior.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-slate-800 text-xs mb-1">
+                    Community & Crisis Outreach
+                  </h4>
+                  <p>
+                    Trusted educator and consultant for Brooklyn schools, EMS mental health triage, and community parenting support groups.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-center text-xs">

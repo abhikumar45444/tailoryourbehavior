@@ -754,18 +754,24 @@ export const ToolsView: React.FC<ToolsViewProps> = ({ onBookSession }) => {
                     <p className="text-xs font-semibold text-slate-900 dark:text-white">
                       {idx + 1}. {q}
                     </p>
-                    <div className="grid grid-cols-4 gap-1.5 text-center">
-                      {['Not at all (0)', 'Several days (1)', 'Over half (2)', 'Every day (3)'].map((opt, val) => (
+                    <div className="grid grid-cols-2 gap-2 text-center pt-1">
+                      {[
+                        { label: '0 - Not at all', val: 0 },
+                        { label: '1 - Several days', val: 1 },
+                        { label: '2 - Over half', val: 2 },
+                        { label: '3 - Every day', val: 3 },
+                      ].map((opt) => (
                         <button
-                          key={val}
-                          onClick={() => handleAnswerAssessment(idx, val)}
-                          className={`py-1.5 px-1 rounded-xl text-[10px] font-medium transition-all ${
-                            assessmentAnswers[idx] === val
+                          key={opt.val}
+                          type="button"
+                          onClick={() => handleAnswerAssessment(idx, opt.val)}
+                          className={`py-2 px-2 rounded-xl text-xs font-medium transition-all ${
+                            assessmentAnswers[idx] === opt.val
                               ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
-                              : 'bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300'
+                              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                           }`}
                         >
-                          {opt}
+                          {opt.label}
                         </button>
                       ))}
                     </div>

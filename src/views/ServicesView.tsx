@@ -152,7 +152,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
 
       {/* Service Detail Modal (Inside Phone Frame) */}
       {activeModalService && (
-        <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs animate-fade-in overflow-hidden">
+        <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-xs animate-fade-in overflow-hidden">
           {/* Backdrop tap to dismiss inside phone */}
           <div 
             className="absolute inset-0 bg-transparent cursor-pointer"
@@ -163,7 +163,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
             aria-hidden="true"
           />
 
-          <div className="relative z-10 w-full bg-white dark:bg-slate-900 rounded-t-3xl shadow-2xl border-t border-slate-700 max-h-[85%] flex flex-col overflow-hidden animate-slide-up">
+          <div className="relative z-10 w-full bg-white rounded-t-3xl shadow-2xl border-t border-slate-200 max-h-[88%] flex flex-col overflow-hidden animate-slide-up">
             
             {/* Sheet Handle */}
             <div 
@@ -171,38 +171,38 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
                 setActiveModalService(null);
                 if (onClearSelectedService) onClearSelectedService();
               }}
-              className="w-full flex justify-center pt-2.5 pb-1 bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 cursor-pointer"
+              className="w-full flex justify-center pt-2.5 pb-1 bg-white cursor-pointer"
             >
-              <div className="w-10 h-1 bg-white/30 rounded-full" />
+              <div className="w-10 h-1 bg-slate-300 rounded-full" />
             </div>
 
-            {/* Modal Header */}
-            <div className="relative bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white px-5 py-4">
+            {/* Modal Header (Clean Light Theme) */}
+            <div className="relative bg-white border-b border-slate-100 px-5 pt-2 pb-4">
               <button
                 onClick={() => {
                   setActiveModalService(null);
                   if (onClearSelectedService) onClearSelectedService();
                 }}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                className="absolute top-3 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
                 aria-label="Close details"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center space-x-2 mb-1.5">
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
+              <div className="flex items-center space-x-2 mb-1.5 pr-8">
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold">
                   {activeModalService.category}
                 </span>
-                <span className="text-[11px] text-slate-300 flex items-center space-x-1">
-                  <Clock className="w-3 h-3" />
+                <span className="text-[11px] text-slate-500 flex items-center space-x-1">
+                  <Clock className="w-3 h-3 text-slate-400" />
                   <span>{activeModalService.duration}</span>
                 </span>
               </div>
 
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 pr-8">
                 {activeModalService.title}
               </h2>
-              <p className="text-xs text-amber-400 font-medium mt-0.5">
+              <p className="text-xs text-amber-600 font-semibold mt-0.5">
                 {activeModalService.subtitle}
               </p>
             </div>
@@ -212,10 +212,10 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
               
               {/* Overview */}
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] mb-1.5">
+                <h4 className="font-bold text-slate-800 uppercase tracking-wider text-[11px] mb-1.5">
                   Clinical Overview
                 </h4>
-                <div className="space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed text-xs">
+                <div className="space-y-2 text-slate-600 leading-relaxed text-xs">
                   {activeModalService.fullDescription.map((p, idx) => (
                     <p key={idx}>{p}</p>
                   ))}
@@ -223,14 +223,14 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
               </div>
 
               {/* Key Benefits */}
-              <div className="bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
-                <h4 className="font-bold text-slate-900 dark:text-white text-xs mb-2 flex items-center space-x-1.5">
+              <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                <h4 className="font-bold text-slate-900 text-xs mb-2 flex items-center space-x-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                   <span>Treatment Goals & Outcomes</span>
                 </h4>
                 <div className="space-y-1.5">
                   {activeModalService.keyBenefits.map((b, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-xs text-slate-600 dark:text-slate-300">
+                    <div key={idx} className="flex items-start space-x-2 text-xs text-slate-600">
                       <CheckCircle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </div>
@@ -240,14 +240,14 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
 
               {/* Techniques Used */}
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] mb-1.5">
+                <h4 className="font-bold text-slate-800 uppercase tracking-wider text-[11px] mb-1.5">
                   Evidence-Based Techniques
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
                   {activeModalService.techniques.map((t, idx) => (
                     <span 
                       key={idx}
-                      className="px-2.5 py-1 rounded-lg bg-brand-50 text-brand-900 dark:bg-brand-950/60 dark:text-brand-300 border border-brand-200 dark:border-brand-800 text-[11px] font-medium"
+                      className="px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200/70 text-[11px] font-medium"
                     >
                       {t}
                     </span>

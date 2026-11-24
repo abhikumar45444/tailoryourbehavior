@@ -417,19 +417,19 @@ export const BookingView: React.FC<BookingViewProps> = ({
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                         Available Time Slots (EST)
                       </label>
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                         {timeSlots.map((time) => (
                           <button
                             key={time}
                             type="button"
                             onClick={() => setSelectedTime(time)}
-                            className={`py-2 px-1 text-center rounded-xl text-xs transition-all ${
+                            className={`py-2.5 px-2 text-center rounded-xl text-xs font-medium transition-all ${
                               selectedTime === time
-                                ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-amber-400'
+                                ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
                             }`}
                           >
                             {time}
